@@ -6,15 +6,20 @@ namespace Vegetable.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly VegetablesContext _context;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(VegetablesContext context, ILogger<HomeController> logger)
         {
+            _context = context;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
+            ViewBag.Category = _context.Categories.ToList();
+            ViewBag.productNew = _context.Products.Where(m => m.IsNew == true).ToList();
+
             return View();
         }
 

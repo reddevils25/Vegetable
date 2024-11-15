@@ -1,4 +1,11 @@
+using Microsoft.EntityFrameworkCore;
+using Vegetable.Models;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<VegetablesContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
