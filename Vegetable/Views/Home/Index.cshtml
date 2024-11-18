@@ -134,7 +134,7 @@
                 @foreach (var item in Category)
                 {
                     <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="~/img/categories/@item.ImageUrl">
+                        <div class="categories__item set-bg" data-setbg="img/categories/@item.ImageUrl">
                             <h5><a href="#">@item.CategoryName</a></h5>
                         </div>
                     </div>
@@ -165,36 +165,7 @@
             </div>
         </div>
         <div class="row featured__filter">
-            @foreach (var item in productNew.OrderBy(x => Guid.NewGuid()).Take(30))
-            {
-                <div class="col-lg-3 col-md-4 col-sm-6 mix @item.CategoryId">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="~/img/product/image_veget/@item.ImageUrl">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="#">@item.ProductName</a></h6>
-                            @if (item.PriceSale == 0)
-                            {
-                                <h5>$@item.Price</h5>
-                            }
-                            else
-                            {
-                                <div style="display: flex; justify-content:center;">
-                                    <h5>
-                                        @item.PriceSale₫
-                                    </h5>
-                                    <h5 style="margin-left: 5px;text-decoration: line-through;">@item.Price₫</h5>
-                                </div>
-                            }
-                        </div>
-                    </div>
-                </div>
-            }
+            @await Component.InvokeAsync("Product")
         </div>
     </div>
 </section>
@@ -431,51 +402,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="blog__item">
-                    <div class="blog__item__pic">
-                        <img src="~/img/blog/blog-1.jpg" alt="">
-                    </div>
-                    <div class="blog__item__text">
-                        <ul>
-                            <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                            <li><i class="fa fa-comment-o"></i> 5</li>
-                        </ul>
-                        <h5><a href="#">Cooking tips make cooking simple</a></h5>
-                        <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="blog__item">
-                    <div class="blog__item__pic">
-                        <img src="~/img/blog/blog-2.jpg" alt="">
-                    </div>
-                    <div class="blog__item__text">
-                        <ul>
-                            <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                            <li><i class="fa fa-comment-o"></i> 5</li>
-                        </ul>
-                        <h5><a href="#">6 ways to prepare breakfast for 30</a></h5>
-                        <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="blog__item">
-                    <div class="blog__item__pic">
-                        <img src="~/img/blog/blog-3.jpg" alt="">
-                    </div>
-                    <div class="blog__item__text">
-                        <ul>
-                            <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                            <li><i class="fa fa-comment-o"></i> 5</li>
-                        </ul>
-                        <h5><a href="#">Visit the clean farm in the US</a></h5>
-                        <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
-                    </div>
-                </div>
-            </div>
+            @await Component.InvokeAsync("Blog")
         </div>
     </div>
 </section>

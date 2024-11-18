@@ -12,6 +12,7 @@ public partial class Blog
     public string Title { get; set; } = null!;
 
     public string Comment { get; set; } = null!;
+    public string? image { get; set; }
 
     public string AuthorId { get; set; } = null!;
 

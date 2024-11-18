@@ -54,6 +54,7 @@ public partial class VegetablesContext : DbContext
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.Comment).HasMaxLength(1000);
+            entity.Property(e => e.image).HasMaxLength(255);
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
