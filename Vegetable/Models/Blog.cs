@@ -12,13 +12,14 @@ public partial class Blog
     public string Title { get; set; } = null!;
 
     public string Comment { get; set; } = null!;
-    public string? image { get; set; }
 
     public string AuthorId { get; set; } = null!;
 
     public DateTime? CreatedAt { get; set; }
 
     public bool? IsActive { get; set; }
+
+    public string? Image { get; set; }
 
     public virtual User Author { get; set; } = null!;
 

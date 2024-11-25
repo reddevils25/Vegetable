@@ -31,7 +31,13 @@ public partial class VegetablesContext : DbContext
 
     public virtual DbSet<Product> Products { get; set; }
 
+    public virtual DbSet<ProductReview> ProductReviews { get; set; }
+
     public virtual DbSet<User> Users { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("data source=LAPTOP-JOG9VM4B;initial catalog=vegetables;Integrated Security=True;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -54,10 +60,13 @@ public partial class VegetablesContext : DbContext
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.Comment).HasMaxLength(1000);
-            entity.Property(e => e.image).HasMaxLength(255);
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
+            entity.Property(e => e.Image)
+                .HasMaxLength(100)
+                .IsFixedLength()
+                .HasColumnName("image");
             entity.Property(e => e.IsActive).HasDefaultValue(true);
             entity.Property(e => e.Title).HasMaxLength(255);
 
@@ -252,6 +261,33 @@ public partial class VegetablesContext : DbContext
                 .HasForeignKey(d => d.CategoryId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Products__Catego__3E52440B");
+        });
+
+        modelBuilder.Entity<ProductReview>(entity =>
+        {
+            entity.HasKey(e => e.ReviewId).HasName("PK__ProductR__74BC79CE9BB3C695");
+
+            entity.ToTable("ProductReview");
+
+            entity.Property(e => e.ReviewId)
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .IsFixedLength();
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.Image).HasMaxLength(255);
+            entity.Property(e => e.IsActive).HasDefaultValue(true);
+            entity.Property(e => e.ModifiedAt).HasColumnType("datetime");
+            entity.Property(e => e.ProductId)
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .IsFixedLength();
+
+            entity.HasOne(d => d.Product).WithMany(p => p.ProductReviews)
+                .HasForeignKey(d => d.ProductId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_ProductReview_Product");
         });
 
         modelBuilder.Entity<User>(entity =>
