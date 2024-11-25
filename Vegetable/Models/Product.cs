@@ -5,7 +5,7 @@ namespace Vegetable.Models;
 
 public partial class Product
 {
-    public string ProductId { get; set; } = null!;
+    public int ProductId { get; set; }
 
     public string ProductName { get; set; } = null!;
 
@@ -15,7 +15,7 @@ public partial class Product
 
     public int StockQuantity { get; set; }
 
-    public string CategoryId { get; set; } = null!;
+    public int CategoryId { get; set; }
 
     public string? ImageUrl { get; set; }
 
@@ -23,11 +23,15 @@ public partial class Product
 
     public DateTime? UpdatedAt { get; set; }
 
-    public string? CategoryProductId { get; set; }
+    public int? CategoryProductId { get; set; }
 
     public bool? IsNew { get; set; }
 
     public int? PriceSale { get; set; }
+
+    public int? Weight { get; set; }
+
+    public string? Alias { get; set; }
 
     public virtual ICollection<Cart> Carts { get; set; } = new List<Cart>();
 

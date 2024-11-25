@@ -5,7 +5,7 @@ namespace Vegetable.Models;
 
 public partial class Contact
 {
-    public string ContactId { get; set; } = null!;
+    public int ContactId { get; set; }
 
     public string FullName { get; set; } = null!;
 

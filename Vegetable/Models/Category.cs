@@ -5,7 +5,7 @@ namespace Vegetable.Models;
 
 public partial class Category
 {
-    public string CategoryId { get; set; } = null!;
+    public int CategoryId { get; set; }
 
     public string CategoryName { get; set; } = null!;
 

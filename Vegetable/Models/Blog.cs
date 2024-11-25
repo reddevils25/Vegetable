@@ -5,9 +5,9 @@ namespace Vegetable.Models;
 
 public partial class Blog
 {
-    public string BlogId { get; set; } = null!;
+    public int BlogId { get; set; }
 
-    public string? CategoryId { get; set; }
+    public int? CategoryId { get; set; }
 
     public string Title { get; set; } = null!;
 
@@ -20,8 +20,6 @@ public partial class Blog
     public bool? IsActive { get; set; }
 
     public string? Image { get; set; }
-
-    public virtual User Author { get; set; } = null!;
 
     public virtual Category? Category { get; set; }
 }

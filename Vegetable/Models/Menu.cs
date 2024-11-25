@@ -5,13 +5,13 @@ namespace Vegetable.Models;
 
 public partial class Menu
 {
-    public string MenuId { get; set; } = null!;
+    public int MenuId { get; set; }
 
     public string Title { get; set; } = null!;
 
     public string Alias { get; set; } = null!;
 
-    public string? Parent { get; set; }
+    public int? Parent { get; set; }
 
     public string? Position { get; set; }
 

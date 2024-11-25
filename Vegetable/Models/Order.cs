@@ -5,7 +5,7 @@ namespace Vegetable.Models;
 
 public partial class Order
 {
-    public string OrderId { get; set; } = null!;
+    public int OrderId { get; set; }
 
     public string? UserId { get; set; }
 
@@ -22,6 +22,4 @@ public partial class Order
     public string? ShippingAddress { get; set; }
 
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
-
-    public virtual User? User { get; set; }
 }

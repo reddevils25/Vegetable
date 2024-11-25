@@ -5,11 +5,11 @@ namespace Vegetable.Models;
 
 public partial class Cart
 {
-    public string CartId { get; set; } = null!;
+    public int CartId { get; set; }
 
-    public string? UserId { get; set; }
+    public int? UserId { get; set; }
 
-    public string? ProductId { get; set; }
+    public int? ProductId { get; set; }
 
     public int Quantity { get; set; }
 

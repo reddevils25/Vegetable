@@ -35,27 +35,16 @@ public partial class VegetablesContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("data source=LAPTOP-JOG9VM4B;initial catalog=vegetables;Integrated Security=True;TrustServerCertificate=True;");
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Blog>(entity =>
         {
-            entity.HasKey(e => e.BlogId).HasName("PK__Blog__54379E30F05046E1");
+            entity.HasKey(e => e.BlogId).HasName("PK__Blog__54379E30DCA519D1");
 
             entity.ToTable("Blog");
 
-            entity.Property(e => e.BlogId)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .IsFixedLength();
+            entity.Property(e => e.BlogId).ValueGeneratedNever();
             entity.Property(e => e.AuthorId)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .IsFixedLength();
-            entity.Property(e => e.CategoryId)
                 .HasMaxLength(10)
                 .IsUnicode(false)
                 .IsFixedLength();
@@ -70,54 +59,35 @@ public partial class VegetablesContext : DbContext
             entity.Property(e => e.IsActive).HasDefaultValue(true);
             entity.Property(e => e.Title).HasMaxLength(255);
 
-            entity.HasOne(d => d.Author).WithMany(p => p.Blogs)
-                .HasForeignKey(d => d.AuthorId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Blog__AuthorId__00200768");
-
             entity.HasOne(d => d.Category).WithMany(p => p.Blogs)
                 .HasForeignKey(d => d.CategoryId)
-                .HasConstraintName("FK__Blog__CategoryId__01142BA1");
+                .HasConstraintName("FK__Blog__CategoryId__5AEE82B9");
         });
 
         modelBuilder.Entity<Cart>(entity =>
         {
-            entity.HasKey(e => e.CartId).HasName("PK__Cart__51BCD7B790178793");
+            entity.HasKey(e => e.CartId).HasName("PK__Cart__51BCD7B76C1D8A70");
 
             entity.ToTable("Cart");
 
-            entity.HasIndex(e => new { e.UserId, e.ProductId }, "UQ__Cart__DCC80021D89EEBA0").IsUnique();
+            entity.HasIndex(e => new { e.UserId, e.ProductId }, "UQ__Cart__DCC800216F97CB80").IsUnique();
 
-            entity.Property(e => e.CartId)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .IsFixedLength();
-            entity.Property(e => e.ProductId)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .IsFixedLength();
-            entity.Property(e => e.UserId)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .IsFixedLength();
+            entity.Property(e => e.CartId).ValueGeneratedNever();
 
             entity.HasOne(d => d.Product).WithMany(p => p.Carts)
                 .HasForeignKey(d => d.ProductId)
-                .HasConstraintName("FK__Cart__ProductId__5812160E");
+                .HasConstraintName("FK__Cart__ProductId__5BE2A6F2");
 
             entity.HasOne(d => d.User).WithMany(p => p.Carts)
                 .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__Cart__UserId__571DF1D5");
+                .HasConstraintName("FK__Cart__UserId__5CD6CB2B");
         });
 
         modelBuilder.Entity<Category>(entity =>
         {
-            entity.HasKey(e => e.CategoryId).HasName("PK__Categori__19093A0B6CCDD08F");
+            entity.HasKey(e => e.CategoryId).HasName("PK__Categori__19093A0BE7149FA1");
 
-            entity.Property(e => e.CategoryId)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .IsFixedLength();
+            entity.Property(e => e.CategoryId).ValueGeneratedNever();
             entity.Property(e => e.CategoryName).HasMaxLength(255);
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
@@ -136,14 +106,12 @@ public partial class VegetablesContext : DbContext
 
         modelBuilder.Entity<Contact>(entity =>
         {
-            entity.HasKey(e => e.ContactId).HasName("PK__Contact__5C6625BBFF9AAA40");
+            entity.HasKey(e => e.ContactId).HasName("PK__Contact__5C6625BBB253468E");
 
             entity.ToTable("Contact");
 
             entity.Property(e => e.ContactId)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .IsFixedLength()
+                .ValueGeneratedNever()
                 .HasColumnName("ContactID");
             entity.Property(e => e.CreatedOn)
                 .HasDefaultValueSql("(getdate())")
@@ -156,14 +124,11 @@ public partial class VegetablesContext : DbContext
 
         modelBuilder.Entity<Menu>(entity =>
         {
-            entity.HasKey(e => e.MenuId).HasName("PK__Menu__C99ED230E874C1FF");
+            entity.HasKey(e => e.MenuId).HasName("PK__Menu__C99ED23072B03A44");
 
             entity.ToTable("Menu");
 
-            entity.Property(e => e.MenuId)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .IsFixedLength();
+            entity.Property(e => e.MenuId).ValueGeneratedNever();
             entity.Property(e => e.Alias).HasMaxLength(255);
             entity.Property(e => e.IsActive).HasDefaultValue(true);
             entity.Property(e => e.Parent)
@@ -176,12 +141,9 @@ public partial class VegetablesContext : DbContext
 
         modelBuilder.Entity<Order>(entity =>
         {
-            entity.HasKey(e => e.OrderId).HasName("PK__Orders__C3905BCF1B318168");
+            entity.HasKey(e => e.OrderId).HasName("PK__Orders__C3905BCF6323CAA5");
 
-            entity.Property(e => e.OrderId)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .IsFixedLength();
+            entity.Property(e => e.OrderId).ValueGeneratedNever();
             entity.Property(e => e.AmountBeforeDiscount).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.DiscountId)
                 .HasMaxLength(10)
@@ -199,54 +161,30 @@ public partial class VegetablesContext : DbContext
                 .HasMaxLength(10)
                 .IsUnicode(false)
                 .IsFixedLength();
-
-            entity.HasOne(d => d.User).WithMany(p => p.Orders)
-                .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__Orders__UserId__4F7CD00D");
         });
 
         modelBuilder.Entity<OrderDetail>(entity =>
         {
-            entity.HasKey(e => e.OrderDetailId).HasName("PK__OrderDet__D3B9D36CC24F21A7");
+            entity.HasKey(e => e.OrderDetailId).HasName("PK__OrderDet__D3B9D36CA79533A4");
 
-            entity.Property(e => e.OrderDetailId)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .IsFixedLength();
-            entity.Property(e => e.OrderId)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .IsFixedLength();
-            entity.Property(e => e.ProductId)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .IsFixedLength();
+            entity.Property(e => e.OrderDetailId).ValueGeneratedNever();
             entity.Property(e => e.UnitPrice).HasColumnType("decimal(10, 2)");
 
             entity.HasOne(d => d.Order).WithMany(p => p.OrderDetails)
                 .HasForeignKey(d => d.OrderId)
-                .HasConstraintName("FK__OrderDeta__Order__52593CB8");
+                .HasConstraintName("FK__OrderDeta__Order__5DCAEF64");
 
             entity.HasOne(d => d.Product).WithMany(p => p.OrderDetails)
                 .HasForeignKey(d => d.ProductId)
-                .HasConstraintName("FK__OrderDeta__Produ__534D60F1");
+                .HasConstraintName("FK__OrderDeta__Produ__5EBF139D");
         });
 
         modelBuilder.Entity<Product>(entity =>
         {
-            entity.HasKey(e => e.ProductId).HasName("PK__Products__B40CC6CD9D3281AD");
+            entity.HasKey(e => e.ProductId).HasName("PK__Products__B40CC6CD8406ACA4");
 
-            entity.Property(e => e.ProductId)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .IsFixedLength();
-            entity.Property(e => e.CategoryId)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .IsFixedLength();
-            entity.Property(e => e.CategoryProductId)
-                .HasMaxLength(10)
-                .IsFixedLength();
+            entity.Property(e => e.ProductId).ValueGeneratedNever();
+            entity.Property(e => e.Alias).HasMaxLength(50);
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
@@ -260,29 +198,22 @@ public partial class VegetablesContext : DbContext
             entity.HasOne(d => d.Category).WithMany(p => p.Products)
                 .HasForeignKey(d => d.CategoryId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Products__Catego__3E52440B");
+                .HasConstraintName("FK__Products__Catego__60A75C0F");
         });
 
         modelBuilder.Entity<ProductReview>(entity =>
         {
-            entity.HasKey(e => e.ReviewId).HasName("PK__ProductR__74BC79CE9BB3C695");
+            entity.HasKey(e => e.ReviewId).HasName("PK__ProductR__74BC79CE1C3B9810");
 
             entity.ToTable("ProductReview");
 
-            entity.Property(e => e.ReviewId)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .IsFixedLength();
+            entity.Property(e => e.ReviewId).ValueGeneratedNever();
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
             entity.Property(e => e.Image).HasMaxLength(255);
             entity.Property(e => e.IsActive).HasDefaultValue(true);
             entity.Property(e => e.ModifiedAt).HasColumnType("datetime");
-            entity.Property(e => e.ProductId)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .IsFixedLength();
 
             entity.HasOne(d => d.Product).WithMany(p => p.ProductReviews)
                 .HasForeignKey(d => d.ProductId)
@@ -292,14 +223,11 @@ public partial class VegetablesContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CC4C432DB7B0");
+            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CC4CE30E670E");
 
-            entity.HasIndex(e => e.Email, "UQ__Users__A9D105349C3CCED9").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Users__A9D10534B2AFD7F5").IsUnique();
 
-            entity.Property(e => e.UserId)
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .IsFixedLength();
+            entity.Property(e => e.UserId).ValueGeneratedNever();
             entity.Property(e => e.Address).HasMaxLength(500);
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")

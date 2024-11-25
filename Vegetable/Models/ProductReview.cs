@@ -5,9 +5,9 @@ namespace Vegetable.Models;
 
 public partial class ProductReview
 {
-    public string ReviewId { get; set; } = null!;
+    public int ReviewId { get; set; }
 
-    public string ProductId { get; set; } = null!;
+    public int ProductId { get; set; }
 
     public int Rating { get; set; }
 

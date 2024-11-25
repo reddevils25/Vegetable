@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Vegetable.Models.Menu>
 
 <ul>
-    @foreach (var item in Model.Where(i => i.Parent == null))
+    @foreach (var item in Model)
     {
         <li class="@(item.Alias == "home" ? "active" : "")">
             <a href="/@item.Alias">@item.Title</a>
