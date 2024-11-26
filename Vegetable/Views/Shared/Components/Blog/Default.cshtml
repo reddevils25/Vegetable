@@ -1,16 +1,18 @@
 ﻿@model IEnumerable<Vegetable.Models.Blog>
 @foreach(var item in Model.Take(3)){
+
+    string sUrl = $"/blog/{item.Alias}-{item.BlogId}.html";
     <div class="col-lg-4 col-md-4 col-sm-6">
         <div class="blog__item">
             <div class="blog__item__pic">
-                <img src="~/img/blog/@item.Image" alt="">
+                <img src="~/img/blog/@item.Image" alt="@sUrl">
             </div>
             <div class="blog__item__text">
                 <ul>
                     <li><i class="fa fa-calendar-o"></i>@item.CreatedAt.Value.ToString("dd/mm/yyyy")</li>
                     <li><i class="fa fa-comment-o"></i> @item.AuthorId </li>
                 </ul>
-                <h5><a href="#">@item.Title</a></h5>
+                <h5><a href="@sUrl">@item.Title</a></h5>
                 <p>@item.Comment </p>
             </div>
         </div>

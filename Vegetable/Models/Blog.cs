@@ -21,5 +21,9 @@ public partial class Blog
 
     public string? Image { get; set; }
 
+    public string? Alias { get; set; }
+
+    public virtual ICollection<BlogComment> BlogComments { get; set; } = new List<BlogComment>();
+
     public virtual Category? Category { get; set; }
 }

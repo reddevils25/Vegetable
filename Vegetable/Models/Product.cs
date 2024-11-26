@@ -14,7 +14,6 @@ public partial class Product
     public int? Price { get; set; }
 
     public int StockQuantity { get; set; }
-    public int Star { get; set; }
 
     public int CategoryId { get; set; }
 
@@ -33,6 +32,8 @@ public partial class Product
     public int? Weight { get; set; }
 
     public string? Alias { get; set; }
+
+    public int? Star { get; set; }
 
     public virtual ICollection<Cart> Carts { get; set; } = new List<Cart>();
 
