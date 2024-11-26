@@ -190,6 +190,7 @@ public partial class VegetablesContext : DbContext
                 .HasColumnType("datetime");
             entity.Property(e => e.Description).HasMaxLength(1000);
             entity.Property(e => e.ImageUrl).HasMaxLength(255);
+            entity.Property(e => e.Star).HasMaxLength(50);
             entity.Property(e => e.ProductName).HasMaxLength(255);
             entity.Property(e => e.UpdatedAt)
                 .HasDefaultValueSql("(getdate())")
