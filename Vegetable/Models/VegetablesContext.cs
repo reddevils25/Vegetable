@@ -37,11 +37,12 @@ public partial class VegetablesContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Blog>(entity =>
         {
-            entity.HasKey(e => e.BlogId).HasName("PK__Blog__54379E3034BF345B");
+            entity.HasKey(e => e.BlogId).HasName("PK__Blog__54379E305EB8A4C5");
 
             entity.ToTable("Blog");
 
@@ -66,12 +67,12 @@ public partial class VegetablesContext : DbContext
 
             entity.HasOne(d => d.Category).WithMany(p => p.Blogs)
                 .HasForeignKey(d => d.CategoryId)
-                .HasConstraintName("FK__Blog__CategoryId__6D0D32F4");
+                .HasConstraintName("FK__Blog__CategoryId__5EBF139D");
         });
 
         modelBuilder.Entity<BlogComment>(entity =>
         {
-            entity.HasKey(e => e.CommentId).HasName("PK__BlogComm__C3B4DFCAFBC1BD42");
+            entity.HasKey(e => e.CommentId).HasName("PK__BlogComm__C3B4DFCAAA586576");
 
             entity.ToTable("BlogComment");
 
@@ -94,26 +95,26 @@ public partial class VegetablesContext : DbContext
 
         modelBuilder.Entity<Cart>(entity =>
         {
-            entity.HasKey(e => e.CartId).HasName("PK__Cart__51BCD7B711E0372F");
+            entity.HasKey(e => e.CartId).HasName("PK__Cart__51BCD7B79EBE5B7E");
 
             entity.ToTable("Cart");
 
-            entity.HasIndex(e => new { e.UserId, e.ProductId }, "UQ__Cart__DCC80021FA0BBB72").IsUnique();
+            entity.HasIndex(e => new { e.UserId, e.ProductId }, "UQ__Cart__DCC80021ABBFC0C4").IsUnique();
 
             entity.Property(e => e.CartId).ValueGeneratedNever();
 
             entity.HasOne(d => d.Product).WithMany(p => p.Carts)
                 .HasForeignKey(d => d.ProductId)
-                .HasConstraintName("FK__Cart__ProductId__6E01572D");
+                .HasConstraintName("FK__Cart__ProductId__60A75C0F");
 
             entity.HasOne(d => d.User).WithMany(p => p.Carts)
                 .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__Cart__UserId__6EF57B66");
+                .HasConstraintName("FK__Cart__UserId__619B8048");
         });
 
         modelBuilder.Entity<Category>(entity =>
         {
-            entity.HasKey(e => e.CategoryId).HasName("PK__Categori__19093A0B7AB28475");
+            entity.HasKey(e => e.CategoryId).HasName("PK__Categori__19093A0B20A94D9A");
 
             entity.Property(e => e.CategoryId).ValueGeneratedNever();
             entity.Property(e => e.CategoryName).HasMaxLength(255);
@@ -134,7 +135,7 @@ public partial class VegetablesContext : DbContext
 
         modelBuilder.Entity<Contact>(entity =>
         {
-            entity.HasKey(e => e.ContactId).HasName("PK__Contact__5C6625BBD3E44DDA");
+            entity.HasKey(e => e.ContactId).HasName("PK__Contact__5C6625BB335FAE4C");
 
             entity.ToTable("Contact");
 
@@ -152,7 +153,7 @@ public partial class VegetablesContext : DbContext
 
         modelBuilder.Entity<Menu>(entity =>
         {
-            entity.HasKey(e => e.MenuId).HasName("PK__Menu__C99ED2306C3E3F32");
+            entity.HasKey(e => e.MenuId).HasName("PK__Menu__C99ED230AE0E0F8B");
 
             entity.ToTable("Menu");
 
@@ -165,7 +166,7 @@ public partial class VegetablesContext : DbContext
 
         modelBuilder.Entity<Order>(entity =>
         {
-            entity.HasKey(e => e.OrderId).HasName("PK__Orders__C3905BCF881D3E05");
+            entity.HasKey(e => e.OrderId).HasName("PK__Orders__C3905BCF16D60C8A");
 
             entity.Property(e => e.OrderId).ValueGeneratedNever();
             entity.Property(e => e.AmountBeforeDiscount).HasColumnType("decimal(10, 2)");
@@ -189,23 +190,23 @@ public partial class VegetablesContext : DbContext
 
         modelBuilder.Entity<OrderDetail>(entity =>
         {
-            entity.HasKey(e => e.OrderDetailId).HasName("PK__OrderDet__D3B9D36CFBB0ACC4");
+            entity.HasKey(e => e.OrderDetailId).HasName("PK__OrderDet__D3B9D36CB90182A1");
 
             entity.Property(e => e.OrderDetailId).ValueGeneratedNever();
             entity.Property(e => e.UnitPrice).HasColumnType("decimal(10, 2)");
 
             entity.HasOne(d => d.Order).WithMany(p => p.OrderDetails)
                 .HasForeignKey(d => d.OrderId)
-                .HasConstraintName("FK__OrderDeta__Order__6FE99F9F");
+                .HasConstraintName("FK__OrderDeta__Order__628FA481");
 
             entity.HasOne(d => d.Product).WithMany(p => p.OrderDetails)
                 .HasForeignKey(d => d.ProductId)
-                .HasConstraintName("FK__OrderDeta__Produ__70DDC3D8");
+                .HasConstraintName("FK__OrderDeta__Produ__6383C8BA");
         });
 
         modelBuilder.Entity<Product>(entity =>
         {
-            entity.HasKey(e => e.ProductId).HasName("PK__Products__B40CC6CD3D43CA92");
+            entity.HasKey(e => e.ProductId).HasName("PK__Products__B40CC6CD5792FFCE");
 
             entity.Property(e => e.ProductId).ValueGeneratedNever();
             entity.Property(e => e.Alias).HasMaxLength(50);
@@ -222,12 +223,12 @@ public partial class VegetablesContext : DbContext
             entity.HasOne(d => d.Category).WithMany(p => p.Products)
                 .HasForeignKey(d => d.CategoryId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Products__Catego__72C60C4A");
+                .HasConstraintName("FK__Products__Catego__656C112C");
         });
 
         modelBuilder.Entity<ProductReview>(entity =>
         {
-            entity.HasKey(e => e.ReviewId).HasName("PK__ProductR__74BC79CED179C2E7");
+            entity.HasKey(e => e.ReviewId).HasName("PK__ProductR__74BC79CED1B5DE26");
 
             entity.ToTable("ProductReview");
 
@@ -247,9 +248,9 @@ public partial class VegetablesContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CC4CB1351917");
+            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CC4CE13ED7BA");
 
-            entity.HasIndex(e => e.Email, "UQ__Users__A9D1053469F0DF8F").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Users__A9D105342584D3C8").IsUnique();
 
             entity.Property(e => e.UserId).ValueGeneratedNever();
             entity.Property(e => e.Address).HasMaxLength(500);

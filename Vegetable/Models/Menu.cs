@@ -15,5 +15,5 @@ public partial class Menu
 
     public string? Position { get; set; }
 
-    public bool? IsActive { get; set; }
+    public bool IsActive { get; set; }
 }
