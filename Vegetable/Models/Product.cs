@@ -11,7 +11,7 @@ public partial class Product
 
     public string? Description { get; set; }
 
-    public int? Price { get; set; }
+    public int Price { get; set; }
 
     public int StockQuantity { get; set; }
 
@@ -25,9 +25,9 @@ public partial class Product
 
     public int? CategoryProductId { get; set; }
 
-    public bool? IsNew { get; set; }
+    public bool IsNew { get; set; }
 
-    public int? PriceSale { get; set; }
+    public int PriceSale { get; set; }
 
     public int? Weight { get; set; }
 
