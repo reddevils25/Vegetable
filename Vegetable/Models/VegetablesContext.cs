@@ -159,6 +159,7 @@ public partial class VegetablesContext : DbContext
 
             entity.Property(e => e.MenuId).ValueGeneratedNever();
             entity.Property(e => e.Alias).HasMaxLength(255);
+            entity.Property(e => e.Description).HasMaxLength(255);
             entity.Property(e => e.IsActive).HasDefaultValue(true);
             entity.Property(e => e.Position).HasMaxLength(100);
             entity.Property(e => e.Title).HasMaxLength(255);

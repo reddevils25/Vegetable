@@ -5,51 +5,50 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
+<div class="body-wrapper">
+    <div class="card mb-0">
+        <div class="card-body">
+            <legend><b>Sửa menu</b></legend>
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="MenuId" />
+                <div class="card-body">
+                    <div class="form-group mb-3">
+                        <label asp-for="Title" class="control-label">Tiêu đề</label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="Alias" class="control-label"></label>
+                        <input asp-for="Alias" class="form-control" />
+                        <span asp-validation-for="Alias" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="Description" class="control-label">Mô tả</label>
+                        <input asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
 
-<h4>Menu</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="MenuId" />
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Alias" class="control-label"></label>
-                <input asp-for="Alias" class="form-control" />
-                <span asp-validation-for="Alias" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Parent" class="control-label"></label>
-                <input asp-for="Parent" class="form-control" />
-                <span asp-validation-for="Parent" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Position" class="control-label"></label>
-                <input asp-for="Position" class="form-control" />
-                <span asp-validation-for="Position" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IsActive" class="control-label"></label>
-                <input asp-for="IsActive" class="form-control" />
-                <span asp-validation-for="IsActive" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+                    <div class="form-group mb-3">
+                        <label asp-for="Parent" class="control-label">Menu cha</label>
+                        <input asp-for="Parent" class="form-control" />
+                        <span asp-validation-for="Parent" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="Position" class="control-label">Vị trí</label>
+                        <input asp-for="Position" class="form-control" />
+                        <span asp-validation-for="Position" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form check mb-3">
+                        <label class="form-checked-input">
+                            <input class="form-check-input" asp-for="IsActive" /> Hiển thị
+                        </label>
+                    </div>
+                    <div class="form-group mb-3">
+                        <input type="submit" value="Sửa" class="btn btn-primary" />
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
