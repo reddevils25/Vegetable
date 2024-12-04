@@ -21,7 +21,7 @@ public partial class Category
 
     public DateTime? ModifiedAt { get; set; }
 
-    public string? Title { get; set; }
+    public bool? Title { get; set; }
 
     public virtual ICollection<Blog> Blogs { get; set; } = new List<Blog>();
 

@@ -9,7 +9,7 @@
     <div class="card mb-0">
         <div class="card-body">
             <p><b>Thêm mới sản phẩm</b></p>
-            <form asp-action="Create">
+            <form asp-action="Create" method="post">
                 <div class="card-body">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group mb-3">
@@ -21,7 +21,7 @@
                         <label asp-for="ProductName" class="control-label">Tên sản phẩm</label>
                         <input asp-for="ProductName" class="form-control" />
                         <span asp-validation-for="ProductName" class="text-danger"></span>
-                    </div>                 
+                    </div>
                     <div class="form-group mb-3">
                         <label asp-for="CategoryId" class="control-label">Danh mục</label>
                         <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId">
@@ -30,14 +30,14 @@
                     </div>
 
                     <div class="form-group mb-3">
-                        <label asp-for="ImageUrl" class="control-label">Ảnh</label>
-                        <div class="input mb-3">
+                        <label asp-for="ImageUrl" class="control-label">Chọn Ảnh</label>
+                        <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <button type="button" class="btn btn-success" onclick="openDialog()">Chỉnh ảnh</button>
+                                <button type="button" class="btn btn-success" onclick="openDialog()">Choose a picture</button>
                             </div>
-
                             <input type="text" class="form-control" id="file_input" asp-for="ImageUrl" aria-describedby="button-addon2" />
                         </div>
+                        <span asp-validation-for="ImageUrl" class="text-danger"></span>
 
                     </div>
 
@@ -65,8 +65,8 @@
                         <label asp-for="Star" class="control-label">Sao</label>
                         <input asp-for="Star" class="form-control" />
                         <span asp-validation-for="Star" class="text-danger"></span>
-                    </div>        
-                    <div class="form-group form check mb-3">
+                    </div>
+                    <div class="form-group form check">
                         <label class="form-checked-input">
                             <input class="form-check-input" asp-for="IsActive" /> Hiển thị
                         </label>
@@ -79,3 +79,8 @@
         </div>
     </div>
 </div>
+
+@* @section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+ *@

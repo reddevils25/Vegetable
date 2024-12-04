@@ -30,7 +30,7 @@ namespace Vegetable.Controllers
                 return NotFound();
             }
             ViewBag.productReview = _context.ProductReviews.Where(i => i.ProductId == id && i.IsActive == true).ToList();
-            ViewBag.productRelated = _context.Products.Where(i => i.ProductId != id && i.CategoryProductId == product.CategoryProductId).Take(5).OrderByDescending(i => i.ProductId).ToList();
+            ViewBag.productRelated = _context.Products.Where(i => i.ProductId != id && i.CategoryId == product.CategoryId).Take(5).OrderByDescending(i => i.ProductId).ToList();
             return View(product);
         }
     }

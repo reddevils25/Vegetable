@@ -23,8 +23,6 @@ public partial class Product
 
     public DateTime? UpdatedAt { get; set; }
 
-    public int? CategoryProductId { get; set; }
-
     public bool IsNew { get; set; }
 
     public int? PriceSale { get; set; }
