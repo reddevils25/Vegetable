@@ -8,39 +8,39 @@
 <div class="body-wrapper">
     <div class="card mb-0">
         <div class="card-body">
-            <p><b>Thêm mới menu</b></p>
+            <p class="h3 text-primary"><b>Thêm mới menu</b></p>
             <form asp-action="Create">
                 <div class="card-body">
                   <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-3 ">
                         <label asp-for="MenuId" class="control-label">MenuID</label>
-                        <input asp-for="MenuId" class="form-control" />
+                        <input asp-for="MenuId" class="form-control border-primary" />
                         <span asp-validation-for="MenuId" class="text-danger"></span>
                     </div>
                     <div class="form-group mb-3">
                     <label asp-for="Title" class="control-label">Tiêu đề</label>
-                    <input asp-for="Title" class="form-control" />
+                        <input asp-for="Title" class="form-control border-primary" />
                     <span asp-validation-for="Title" class="text-danger"></span>
                   </div>
                     <div class="form-group mb-3">
                     <label asp-for="Alias" class="control-label">Alias</label>
-                    <input asp-for="Alias" class="form-control" />
+                        <input asp-for="Alias" class="form-control border-primary" />
                     <span asp-validation-for="Alias" class="text-danger"></span>
                   </div>
                     <div class="form-group mb-3">
                         <label asp-for="Description" class="control-label">Mô tả</label>
-                        <input asp-for="Description" class="form-control" />
+                        <input asp-for="Description" class="form-control border-primary" />
                         <span asp-validation-for="Description" class="text-danger"></span>
                   </div>
                 
                     <div class="form-group mb-3">
                     <label asp-for="Parent" class="control-label">Menu cha</label>
-                    <input asp-for="Parent" class="form-control" />
+                        <input asp-for="Parent" class="form-control border-primary" />
                     <span asp-validation-for="Parent" class="text-danger"></span>
                   </div>
                     <div class="form-group mb-3">
                     <label asp-for="Position" class="control-label">Vị trí</label>
-                    <input asp-for="Position" class="form-control" />
+                        <input asp-for="Position" class="form-control border-primary" />
                     <span asp-validation-for="Position" class="text-danger"></span>
                   </div>
                     <div class="form-group form check mb-3">

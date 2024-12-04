@@ -12,27 +12,27 @@
             <form asp-action="Delete">
                 <div class="card-body">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group">
+                    <div class="form-group mb-4">
                         <label for="exampleInputEmail1"><b>Tiêu đề: </b></label>
                         @Html.DisplayFor(model => model.Title)
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mb-4">
                         <label for="Alias"><b>Alias: </b></label>
                         @Html.DisplayFor(model => model.Alias)
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mb-4">
                         <label for="Description"><b>Mô tả: </b></label>
                         @Html.DisplayFor(model => model.Description)
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mb-4">
                         <label for="Parent"><b>Menu cha: </b></label>
                         @Html.DisplayFor(model => model.Parent)
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mb-4">
                         <label for="Position"><b>Vị trí: </b></label>
                         @Html.DisplayFor(model => model.Position)
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mb-4">
                         <label for="IsActive"><b>Hiển thị: </b></label>
                         @Html.DisplayFor(model => model.IsActive)
                     </div>
