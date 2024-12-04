@@ -4,7 +4,6 @@
     ViewData["Title"] = "Delete";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
 <div class="body-wrapper">
     <div class="card mb-0">
         <div class="card-body">
@@ -20,7 +19,7 @@
                         <label for="exampleInputPassword1">Alias: </label>
                         @Html.DisplayFor(model => model.Alias)
                     </div>
-    
+
                     <div class="form-group">
                         <label for="exampleInputPassword1">Mô tả: </label>
                         @Html.DisplayFor(model => model.Description)
@@ -28,7 +27,7 @@
                     <div class="form-group">
                         <label for="exampleInputPassword1"></label>
                         <div class="text-center">
-                            <img src="" alt="Product Image" style="max-width: 100%; height: auto;" />
+                            <img src="~/img/product/image_veget/@Model.ImageUrl" alt="Product Image" style="max-width: 100%; height: auto;" />
                         </div>
                     </div>
                     <form asp-action="Delete" class="mt-4">

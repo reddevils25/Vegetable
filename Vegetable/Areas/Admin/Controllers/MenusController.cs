@@ -54,7 +54,7 @@ namespace Vegetable.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MenuId,Title,Alias,Parent,Position,IsActive")] Menu menu)
+        public async Task<IActionResult> Create([Bind("MenuId,Title,Alias,Description,Parent,Position,IsActive")] Menu menu)
         {
             if (ModelState.IsValid)
             {
@@ -65,6 +65,7 @@ namespace Vegetable.Areas.Admin.Controllers
             }
             return View(menu);
         }
+
 
         // GET: Admin/Menus/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -87,7 +88,7 @@ namespace Vegetable.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MenuId,Title,Alias,Parent,Position,IsActive")] Menu menu)
+        public async Task<IActionResult> Edit(int id, [Bind("MenuId,Title,Alias,Description,Parent,Position,IsActive")] Menu menu)
         {
             if (id != menu.MenuId)
             {

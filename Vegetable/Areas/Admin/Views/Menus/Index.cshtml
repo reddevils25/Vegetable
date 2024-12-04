@@ -17,6 +17,7 @@
                             <thead class="text-dark fs-4">
                                 <tr>
                                     <th>STT</th>
+                                    <th>MenuID</th>
                                     <th>Tiêu đề</th>
                                     <th>Alias</th>
                                     <th>Cấp</th>
@@ -32,6 +33,7 @@
                                 {
                                     <tr>
                                         <td>@(i++)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.MenuId)</td>
                                         <td>@Html.DisplayFor(modelItem => item.Title)</td>
                                         <td>@Html.DisplayFor(modelItem => item.Alias)</td>
                                         <td>@Html.DisplayFor(modelItem => item.Parent)</td>
@@ -39,7 +41,6 @@
                                         <td>@Html.CheckBoxFor(modelItem => item.IsActive)</td>
                                         <td>
                                             <a asp-action="Edit" asp-route-id="@item.MenuId" class="btn btn-primary">Sửa</a>
-                                            <a asp-action="Details" asp-route-id="@item.MenuId" class="btn btn-info">Chi tiết</a>
                                             <a asp-action="Delete" asp-route-id="@item.MenuId" class="btn btn-danger">Xóa</a>
                                         </td>
                                     </tr>

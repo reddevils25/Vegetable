@@ -4,17 +4,14 @@
     @foreach (var item in Model)
     {
         <li class="@(item.Alias == "home" ? "active" : "")">
-            <a href="/@item.Alias">@item.Title</a>
-            @if (Model.Any(i => i.Parent != null && i.Parent == item.MenuId))
+            @if (item.Alias == "lien-he")
+            { 
+                <a href="@Url.Action("Index", "Contact")">Liên hệ</a>
+            }
+            else
             {
-                <ul class="header__menu__dropdown">
-                    @foreach (var subItem in Model.Where(i => i.Parent == item.MenuId))
-                    {
-                        <li><a href="/@subItem.Alias">@subItem.Title</a></li>
-                    }
-                </ul>
+                <a href="/@item.Alias">@item.Title</a>
             }
         </li>
-
     }
 </ul>

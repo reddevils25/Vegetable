@@ -48,7 +48,7 @@ namespace Vegetable.Areas.Admin.Controllers
         // GET: Admin/Products/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId");
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Title");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace Vegetable.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductId,ProductName,Description,Price,StockQuantity,CategoryId,ImageUrl,CreatedAt,UpdatedAt,CategoryProductId,IsNew,PriceSale,Weight,Alias,Star")] Product product)
+        public async Task<IActionResult> Create([Bind("ProductId,ProductName,Description,Price,StockQuantity,CategoryId,ImageUrl,CreatedAt,UpdatedAt,CategoryProductId,IsNew,PriceSale,Weight,Alias,Star,IsActive")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -66,8 +66,7 @@ namespace Vegetable.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new 
-                SelectList(_context.Categories, "CategoryId", "CategoryId", product.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Title", product.CategoryId);
             return View(product);
         }
 
@@ -93,7 +92,7 @@ namespace Vegetable.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductId,ProductName,Description,Price,StockQuantity,CategoryId,ImageUrl,CreatedAt,UpdatedAt,CategoryProductId,IsNew,PriceSale,Weight,Alias,Star")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("ProductId,ProductName,Description,Price,StockQuantity,CategoryId,ImageUrl,CreatedAt,UpdatedAt,CategoryProductId,IsNew,PriceSale,Weight,Alias,Star,IsActive")] Product product)
         {
             if (id != product.ProductId)
             {

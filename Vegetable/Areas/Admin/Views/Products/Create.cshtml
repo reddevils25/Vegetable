@@ -8,43 +8,39 @@
 <div class="body-wrapper">
     <div class="card mb-0">
         <div class="card-body">
-            <legend><b>Thêm sản phẩm</b></legend>
+            <p><b>Thêm mới sản phẩm</b></p>
             <form asp-action="Create">
                 <div class="card-body">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group mb-3">
-                        <label asp-for="ProductName" class="control-label">Tiêu đề</label>
+                        <label asp-for="ProductId" class="control-label">ProductID</label>
+                        <input asp-for="ProductId" class="form-control" />
+                        <span asp-validation-for="ProductId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="ProductName" class="control-label">Tên sản phẩm</label>
                         <input asp-for="ProductName" class="form-control" />
                         <span asp-validation-for="ProductName" class="text-danger"></span>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label asp-for="Alias" class="control-label">Alias</label>
-                        <input asp-for="Alias" class="form-control" />
-                        <span asp-validation-for="Alias" class="text-danger"></span>
-                    </div>
+                    </div>                 
                     <div class="form-group mb-3">
                         <label asp-for="CategoryId" class="control-label">Danh mục</label>
-                        <input asp-for="CategoryId" class="form-control" />
-                        <span asp-validation-for="CategoryId" class="text-danger"></span>
+                        <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId">
+                            <option value="0" selected>--[Chọn danh mục]--</option>
+                        </select>
                     </div>
 
                     <div class="form-group mb-3">
                         <label asp-for="ImageUrl" class="control-label">Ảnh</label>
                         <div class="input mb-3">
                             <div class="input-group-prepend">
-                                <button type="button" class="btn btn-success" onclick="openDialog()">Chọn ảnh</button>
+                                <button type="button" class="btn btn-success" onclick="openDialog()">Chỉnh ảnh</button>
                             </div>
 
                             <input type="text" class="form-control" id="file_input" asp-for="ImageUrl" aria-describedby="button-addon2" />
                         </div>
 
                     </div>
-                    
-                    <div class="form-group mb-3">
-                        <label asp-for="Description" class="control-label">Mô tả</label>
-                        <input asp-for="Description" class="form-control" />
-                        <span asp-validation-for="Description" class="text-danger"></span>
-                    </div>
+
                     <div class="form-group mb-3">
                         <label asp-for="Price" class="control-label">Giá</label>
                         <input asp-for="Price" class="form-control" />
@@ -56,18 +52,23 @@
                         <span asp-validation-for="PriceSale" class="text-danger"></span>
                     </div>
                     <div class="form-group mb-3">
-                        <label asp-for="Weight" class="control-label">Trọng lượng</label>
+                        <label asp-for="Weight" class="control-label">Khối lượng</label>
                         <input asp-for="Weight" class="form-control" />
                         <span asp-validation-for="Weight" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="StockQuantity" class="control-label">Số lượng</label>
+                        <input asp-for="StockQuantity" class="form-control" />
+                        <span asp-validation-for="StockQuantity" class="text-danger"></span>
                     </div>
                     <div class="form-group mb-3">
                         <label asp-for="Star" class="control-label">Sao</label>
                         <input asp-for="Star" class="form-control" />
                         <span asp-validation-for="Star" class="text-danger"></span>
-                    </div>
+                    </div>        
                     <div class="form-group form check mb-3">
                         <label class="form-checked-input">
-                            <input class="form-check-input" asp-for="IsNew" /> Hiện thị
+                            <input class="form-check-input" asp-for="IsActive" /> Hiển thị
                         </label>
                     </div>
                     <div class="form-group mb-3">

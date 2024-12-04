@@ -11,10 +11,11 @@ public partial class Menu
 
     public string Alias { get; set; } = null!;
 
-    public string Description { get; set; }
     public int? Parent { get; set; }
 
     public string? Position { get; set; }
 
     public bool IsActive { get; set; }
+
+    public string? Description { get; set; }
 }
