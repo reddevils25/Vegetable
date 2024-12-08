@@ -1,30 +1,26 @@
-﻿@model IEnumerable<Vegetable.Models.Product>
+﻿@model IEnumerable<Vegetable.Models.Category>
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-
 <div class="body-wrapper">
     <div class="row">
         <div class="col-12 d-flex align-items-stretch">
             <div class="card w-100">
                 <div class="card-body p-4">
-                    <h5 class="card-title fw-semibold mb-4">Quản lí sản phẩm</h5>
+                    <h5 class="card-title fw-semibold mb-4">Quản lí danh mục sản phẩm</h5>
                     <div class="table-responsive">
                         <h3 class="card-title"><a asp-action="Create">Thêm mới</a></h3>
                         <table class="table text-nowrap mb-0 align-middle">
                             <thead class="text-dark fs-4">
                                 <tr>
                                     <th>STT</th>
-                                    <th>Tên sản phẩm</th>
-                                    <th>Danh mục</th>
+                                    <th>CategorieID</th>
+                                    <th>Tên danh mục</th>
                                     <th>Ảnh</th>
-                                    <th>Giá</th>
-                                    <th>Giá giảm</th>
-                                    <th>Khối lượng</th>  
+                                    <th>Tiêu đề</th>
                                     <th>Hiện</th>
-                                    <th>Sao</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,19 +31,16 @@
                                 {
                                     <tr>
                                         <td>@(i++)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.ProductName)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.Category.CategoryName)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.CategoryId)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.CategoryName)</td>
                                         <td>
-                                            <img src="@Url.Content("~/img/product/image_veget/" + item.ImageUrl)" width="50" height="50" />
+                                            <img src="@Url.Content("~/img/categories/" + item.ImageUrl)" width="50" height="50" />
                                         </td>
-                                        <td>@Html.DisplayFor(modelItem => item.Price)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.PriceSale)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.Weight)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Title)</td>
                                         <td>@Html.CheckBoxFor(modelItem => item.IsActive)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.Star)</td>
                                         <td>
-                                            <a asp-action="Edit" asp-route-id="@item.ProductId" class="btn btn-primary">Sửa</a>
-                                            <a asp-action="Delete" asp-route-id="@item.ProductId" class="btn btn-danger">Xóa</a>
+                                            <a asp-action="Edit" asp-route-id="@item.CategoryId" class="btn btn-primary">Sửa</a>
+                                            <a asp-action="Delete" asp-route-id="@item.CategoryId" class="btn btn-danger">Xóa</a>
                                         </td>
                                     </tr>
                                 }
@@ -59,3 +52,4 @@
         </div>
     </div>
 </div>
+

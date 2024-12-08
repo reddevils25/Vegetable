@@ -16,26 +16,30 @@ namespace Vegetable.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(string name, string phone, string email, string message)
+        public async Task<IActionResult> Create(string name, string phone, string email, string message)
         {
             try
             {
-                Contact contact = new Contact();
-                contact.FullName = name;
-                contact.Phone = phone;
-                contact.EmailAddress = email;
-                contact.InquiryMessage = message;
-                contact.CreatedOn = DateTime.Now;
+                Contact contact = new Contact
+                {
+                    FullName = name,
+                    Phone = phone,
+                    EmailAddress = email,
+                    InquiryMessage = message
+                };
+
                 _context.Add(contact);
-                _context.SaveChangesAsync();
+                await _context.SaveChangesAsync(); // Chờ lưu thay đổi
 
                 return Json(new { status = true });
-
             }
-            catch
+            catch (Exception ex)
             {
+                // Log lỗi để kiểm tra chi tiết nếu cần
+                Console.WriteLine(ex.Message);
                 return Json(new { status = false });
             }
         }
+
     }
 }

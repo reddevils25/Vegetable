@@ -3,15 +3,8 @@
 <ul>
     @foreach (var item in Model)
     {
-        <li class="@(item.Alias == "home" ? "active" : "")">
-            @if (item.Alias == "lien-he")
-            { 
-                <a href="@Url.Action("Index", "Contact")">Liên hệ</a>
-            }
-            else
-            {
-                <a href="/@item.Alias">@item.Title</a>
-            }
+        <li >
+            <a href="~/@item.Alias">@item.Title</a>
         </li>
     }
 </ul>

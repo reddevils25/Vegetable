@@ -14,7 +14,7 @@ namespace Vegetable.ViewComponents
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var items = _context.Products.Include(m => m.Category).Where(m => m.IsNew == true);
+            var items = _context.Products.Include(m => m.Category).Where(m => m.IsActive == true);
 
             return await Task.FromResult<IViewComponentResult>
                 (View(items.OrderByDescending(m => m.ProductId).ToList()));

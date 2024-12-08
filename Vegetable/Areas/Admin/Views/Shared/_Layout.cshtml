@@ -61,11 +61,11 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
+                            <a class="sidebar-link" asp-area="Admin" asp-controller="Categories" asp-action="Index" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-cards"></i>
                                 </span>
-                                <span class="hide-menu">Quản lý danh mục sản phẩm</span>
+                                <span class="hide-menu">Danh mục sản phẩm</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -152,6 +152,7 @@
     <script src="~/admin/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
     <script src="~/admin/assets/libs/simplebar/dist/simplebar.js"></script>
     <script src="~/admin/assets/js/dashboard.js"></script>
+    @RenderSection("Scripts", required: false)
 
 </body>
 

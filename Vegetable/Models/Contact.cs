@@ -14,8 +14,4 @@ public partial class Contact
     public string? Phone { get; set; }
 
     public string InquiryMessage { get; set; } = null!;
-
-    public DateTime? CreatedOn { get; set; }
-
-    public bool? IsActive { get; set; }
 }

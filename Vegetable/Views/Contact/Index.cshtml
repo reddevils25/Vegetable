@@ -90,7 +90,7 @@
                 </div>
                 <div class="col-lg-12 text-center">
                     <textarea id="c_message" placeholder="Your message"></textarea>
-                    <button type="button" id="c_submit" class="site-btn">Gửi lời nhắn</button>
+                    <button type="button" id="c_submit" value="submit" class="site-btn">Gửi lời nhắn</button>
                 </div>
             </div>
         </form>
@@ -101,20 +101,21 @@
     <script>
         $(document).ready(function () {
                    $("#c_submit").click(function (event) {
-            event.preventDefault(); // Ngăn hành động mặc định
+            event.preventDefault(); 
 
-            // Lấy giá trị từ các trường
             let _name = $("#c_name").val().trim();
             let _phone = $("#c_phone").val().trim();
             let _email = $("#c_email").val().trim();
             let _message = $("#c_message").val().trim();
 
-            // Kiểm tra nếu bất kỳ trường nào trống
             if (!_name || !_phone || !_email || !_message) {
                 toastr.error("Vui lòng điền đầy đủ thông tin!");
                 return;
             }
-
+              if (_name.length > 255 || _email.length > 255 || _phone.length > 20 || _message.length > 4000) {
+                    toastr.error("Một trong các trường vượt quá độ dài cho phép!");
+                    return;
+                }
             // Nếu tất cả trường đều hợp lệ, gửi AJAX
             $.ajax({
                 url: "/Contact/Create",

@@ -18,7 +18,7 @@ namespace Vegetable.Controllers
         public IActionResult Index()
         {
             ViewBag.Category = _context.Categories.ToList();
-            ViewBag.productNew = _context.Products.Where(m => m.IsNew == true).ToList();
+            ViewBag.productNew = _context.Products.Where(m => m.IsActive == true).ToList();
 
             return View();
         }

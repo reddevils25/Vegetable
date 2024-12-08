@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="blog__details__hero__text">
-                    <h2>The Moment You Need To Remove Garlic From The Menu</h2>
+                    <h2>@Model.Title</h2>
                     <ul>
                         <li>By Michael Scofield</li>
                         <li>January 14, 2019</li>
@@ -75,42 +75,68 @@
             </div>
             <div class="col-lg-8 col-md-7 order-md-1 order-1">
                 <div class="blog__details__text">
-                    <img src="/img/blog/@Model.Image" alt="">
-                    <p>
-                       @Model.Comment
+             
+                    <img src="/img/blog/@Model.Image" alt="" class="d-block mx-auto img-fluid mb-4" style="max-width: 700; height: auto;">
+                    <p class="lead" style="line-height: 1.8;">
+                        @Model.Comment
                     </p>
-           
                 </div>
-                <div class="blog__details__content">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="blog__details__author">
-                                <div class="blog__details__author__pic">
-                                    <img src="/img/blog/details/details-author.jpg" alt="">
-                                </div>
-                                <div class="blog__details__author__text">
-                                    <h6>Michael Scofield</h6>
-                                    <span>Admin</span>
+
+                <div class="container mt-5">
+                    <!-- Blog Comments -->
+                    <div class="blog-comment pt-4">
+                        <h4 class="mb-4">@blogComment.Count() Bình luận</h4>
+                        <div class="container my-5">
+                            <div class="row">
+                                <div class="card text-body">
+                                    @foreach (var item in blogComment)
+                                    {
+                                        <div class="card-body p-2">
+                                            <div class="d-flex flex-start">
+                                                <img class="rounded-circle shadow-1-strong me-5"
+                                                     src="~/img/BlogCmt/@item.Images" alt="avatar" width="60"
+                                                     height="60" />
+                                                <div class="ml-5">
+
+                                                    <div class="d-flex align-items-center mb-3">
+                                                        <h6 class="fw-bold mr-3">@item.CmtBlName</h6>
+                                                        <p class="mb-0">
+                                                            @item.CreatedAt
+                                                        </p>  
+                                                    </div>
+                                                    <p class="mb-2">
+                                                        @item.Detail
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="my-0" />
+                                    }
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="blog__details__widget">
-                                <ul>
-                                    <li><span>Categories:</span> Food</li>
-                                    <li><span>Tags:</span> All, Trending, Cooking, Healthy Food, Life Style</li>
-                                </ul>
-                                <div class="blog__details__social">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                                    <a href="#"><i class="fa fa-linkedin"></i></a>
-                                    <a href="#"><i class="fa fa-envelope"></i></a>
+                        
+                    </div>
+
+                    <!-- Feedback Form -->
+                    <div class="feedback-area mt-5">
+                        <h4 class="mb-3">Gửi bình luận</h4>
+                        <form id="contact-form">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <input type="text" id="c_name" name="name" class="form-control" placeholder="Your Name*" required>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <textarea name="message" id="c_message" class="form-control" rows="5" placeholder="Message" required></textarea>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <button type="button" id="c_submit" class="btn btn-primary w-100">Gửi đi</button>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -148,3 +174,42 @@
     </div>
 </section>
 <!-- Related Blog Section End -->
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+                   $("#c_submit").click(function (event) {
+            event.preventDefault();
+
+            let _name = $("#c_name").val().trim();
+            let _message = $("#c_message").val().trim();
+
+            if (!_name || !_message) {
+                toastr.error("Vui lòng điền đầy đủ thông tin!");
+                return;
+            }
+            // Nếu tất cả trường đều hợp lệ, gửi AJAX
+            $.ajax({
+                url: "/Blog/Create",
+                type: "POST",
+                data: {
+                    name: _name,
+                    message: _message
+                },
+                success: function (result) {
+                    if (result.status) {
+                        $("#c_name").val("");  
+                        $("#c_message").val("");
+                        toastr.success("Gửi thành công!");
+                    } else {
+                        toastr.error("Gửi không thành công!");
+                    }
+                },
+                error: function () {
+                    toastr.error("Có lỗi xảy ra, vui lòng thử lại!");
+                }
+            });
+        });
+
+        });
+    </script>
+}

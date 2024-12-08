@@ -33,5 +33,29 @@ namespace Vegetable.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> Create(string name, string message)
+        {
+            try
+            {
+                BlogComment blogComment = new BlogComment
+                {
+                    CmtBlName = name,
+                    Detail = message,
+                    BlogId = 4
+
+                };
+
+                _context.Add(blogComment);
+                await _context.SaveChangesAsync();
+
+                return Json(new { status = true });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return Json(new { status = false });
+            }
+        }
     }
 }

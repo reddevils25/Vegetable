@@ -23,6 +23,8 @@ public partial class Blog
 
     public string? Alias { get; set; }
 
+    public string? Description { get; set; }
+
     public virtual ICollection<BlogComment> BlogComments { get; set; } = new List<BlogComment>();
 
     public virtual Category? Category { get; set; }

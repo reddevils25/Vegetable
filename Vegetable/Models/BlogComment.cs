@@ -19,5 +19,7 @@ public partial class BlogComment
 
     public string? Images { get; set; }
 
+    public string? CmtBlName { get; set; }
+
     public virtual Blog Blog { get; set; } = null!;
 }

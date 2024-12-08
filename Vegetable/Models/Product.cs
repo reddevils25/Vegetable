@@ -19,12 +19,6 @@ public partial class Product
 
     public string? ImageUrl { get; set; }
 
-    public DateTime? CreatedAt { get; set; }
-
-    public DateTime? UpdatedAt { get; set; }
-
-    public bool IsNew { get; set; }
-
     public int? PriceSale { get; set; }
 
     public int? Weight { get; set; }
@@ -34,6 +28,8 @@ public partial class Product
     public int? Star { get; set; }
 
     public bool IsActive { get; set; }
+
+    public virtual ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
 
     public virtual ICollection<Cart> Carts { get; set; } = new List<Cart>();
 

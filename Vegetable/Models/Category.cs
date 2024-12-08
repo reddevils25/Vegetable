@@ -13,15 +13,9 @@ public partial class Category
 
     public string? ImageUrl { get; set; }
 
-    public string? ParentCategoryId { get; set; }
+    public bool IsActive { get; set; }
 
-    public bool? IsActive { get; set; }
-
-    public DateTime? CreatedAt { get; set; }
-
-    public DateTime? ModifiedAt { get; set; }
-
-    public bool? Title { get; set; }
+    public string? Title { get; set; }
 
     public virtual ICollection<Blog> Blogs { get; set; } = new List<Blog>();
 
