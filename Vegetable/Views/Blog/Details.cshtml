@@ -2,6 +2,7 @@
 @{
     List<BlogComment> blogComment = ViewBag.blogComment;
     List<Blog> blogs = ViewBag.blog;
+    List<Category> categories = ViewBag.categorie;
 }
 
 
@@ -14,7 +15,7 @@
                     <ul>
                         <li>By Michael Scofield</li>
                         <li>January 14, 2019</li>
-                        <li>8 Comments</li>
+                        <li>@blogComment.Count() Bình luận</li>
                     </ul>
                 </div>
             </div>
@@ -35,22 +36,20 @@
                         </form>
                     </div>
                     <div class="blog__sidebar__item">
-                        <h4>Categories</h4>
+                        <h4>Danh mục sản phẩm</h4>
                         <ul>
-                            <li><a href="#">All</a></li>
-                            <li><a href="#">Beauty (20)</a></li>
-                            <li><a href="#">Food (5)</a></li>
-                            <li><a href="#">Life Style (9)</a></li>
-                            <li><a href="#">Travel (10)</a></li>
+                           @foreach(var item in categories){
+                                <li><a href="#">@item.CategoryName</a></li>
+                           }
                         </ul>
                     </div>
                     <div class="blog__sidebar__item">
-                        <h4>Recent News</h4>
+                        <h4>Tin tức gần đây</h4>
                         <div class="blog__sidebar__recent">
                           @foreach(var item in blogs.Take(3)){
                                 <a href="#" class="blog__sidebar__recent__item">
                                     <div class="blog__sidebar__recent__item__pic">
-                                        <img src="/img/blog/sidebar/sr-1.jpg" alt="">
+                                        <img src="/img/blog/@item.Image" width="50" height="50" alt="">
                                     </div>
                                     <div class="blog__sidebar__recent__item__text">
                                         <h6>@item.Title</h6>
@@ -76,8 +75,10 @@
             <div class="col-lg-8 col-md-7 order-md-1 order-1">
                 <div class="blog__details__text">
              
-                    <img src="/img/blog/@Model.Image" alt="" class="d-block mx-auto img-fluid mb-4" style="max-width: 700; height: auto;">
-                    <p class="lead" style="line-height: 1.8;">
+                    <img src="/img/blog/@Model.Image" alt="" class="d-block mx-auto img-fluid mb-4" width="700" height="350">
+                    <h3 class="fw-bold">@Model.Title</h3>
+                    <h4 class="text-gray-200 mb-2">@Model.Description</h4>
+                    <p style="line-height: 1.8;">
                         @Model.Comment
                     </p>
                 </div>
@@ -117,26 +118,23 @@
                         </div>
                         
                     </div>
-
-                    <!-- Feedback Form -->
-                    <div class="feedback-area mt-5">
-                        <h4 class="mb-3">Gửi bình luận</h4>
-                        <form id="contact-form">
-                            <div class="row g-3">
-                                <div class="col-md-4">
-                                    <input type="text" id="c_name" name="name" class="form-control" placeholder="Your Name*" required>
-                                </div>
-                                <div class="col-12 mt-3">
-                                    <textarea name="message" id="c_message" class="form-control" rows="5" placeholder="Message" required></textarea>
-                                </div>
-                                <div class="col-12 mt-3">
-                                    <button type="button" id="c_submit" class="btn btn-primary w-100">Gửi đi</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
                 </div>
-
+                <div class="feedback-area mt-5">
+                    <h4 class="mb-3">Gửi bình luận</h4>
+                    <form id="contact-form">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <input type="text" id="c_name" name="name" class="form-control" placeholder="Your Name*" required>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <textarea name="message" id="c_message" class="form-control" rows="5" placeholder="Message" required></textarea>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <button type="button" id="c_submit" class="btn btn-primary w-100">Gửi đi</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

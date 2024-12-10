@@ -29,13 +29,12 @@ namespace Vegetable.Controllers
                 };
 
                 _context.Add(contact);
-                await _context.SaveChangesAsync(); // Chờ lưu thay đổi
+                await _context.SaveChangesAsync(); 
 
                 return Json(new { status = true });
             }
             catch (Exception ex)
-            {
-                // Log lỗi để kiểm tra chi tiết nếu cần
+            {  
                 Console.WriteLine(ex.Message);
                 return Json(new { status = false });
             }

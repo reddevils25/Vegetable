@@ -14,6 +14,7 @@ namespace Vegetable.Controllers
 
         public IActionResult Index()
         {
+            
             return View();
         }
         [Route("/product/{alias}-{id}.html")]

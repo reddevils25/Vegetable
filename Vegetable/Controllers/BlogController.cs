@@ -27,6 +27,7 @@ namespace Vegetable.Controllers
 
             ViewBag.blogComment = _context.BlogComments.Where(i => i.BlogId == id).ToList();
             ViewBag.blog = _context.Blogs.ToList();
+            ViewBag.categorie = _context.Categories.ToList();
             return View(blog);
         }
         public IActionResult Index()

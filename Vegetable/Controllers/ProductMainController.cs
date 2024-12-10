@@ -4,18 +4,16 @@ using Vegetable.Models;
 
 namespace Vegetable.Controllers
 {
-    public class MainBlogController : Controller
+    public class ProductMainController : Controller
     {
-
         private readonly VegetablesContext _context;
-        public MainBlogController(VegetablesContext context)
+        public ProductMainController(VegetablesContext context)
         {
             _context = context;
         }
         public IActionResult Index()
         {
-            ViewBag.Blogs = _context.Blogs.ToList();
-            ViewBag.Categorie = _context.Categories.ToList();
+            ViewBag.Product = _context.Products.ToList();
             return View();
         }
     }
