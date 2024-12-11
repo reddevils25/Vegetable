@@ -229,17 +229,19 @@ public partial class VegetablesContext : DbContext
 
         modelBuilder.Entity<ProductReview>(entity =>
         {
-            entity.HasKey(e => e.ReviewId).HasName("PK__ProductR__74BC79CED1B5DE26");
+            entity.HasKey(e => e.ReviewId).HasName("PK__ProductR__74BC79CEF2179633");
 
             entity.ToTable("ProductReview");
 
-            entity.Property(e => e.ReviewId).ValueGeneratedNever();
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
             entity.Property(e => e.Image).HasMaxLength(255);
             entity.Property(e => e.IsActive).HasDefaultValue(true);
             entity.Property(e => e.ModifiedAt).HasColumnType("datetime");
+            entity.Property(e => e.Prname)
+                .HasMaxLength(255)
+                .HasColumnName("PRname");
 
             entity.HasOne(d => d.Product).WithMany(p => p.ProductReviews)
                 .HasForeignKey(d => d.ProductId)

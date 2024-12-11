@@ -21,5 +21,7 @@ public partial class ProductReview
 
     public bool IsActive { get; set; }
 
+    public string? Prname { get; set; }
+
     public virtual Product Product { get; set; } = null!;
 }
