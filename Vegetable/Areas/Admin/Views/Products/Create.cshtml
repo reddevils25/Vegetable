@@ -18,6 +18,11 @@
                         <span asp-validation-for="ProductId" class="text-danger"></span>
                     </div>
                     <div class="form-group mb-3">
+                        <label asp-for="Alias" class="control-label">Alias</label>
+                        <input asp-for="Alias" class="form-control" />
+                        <span asp-validation-for="Alias" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
                         <label asp-for="ProductName" class="control-label">Tên sản phẩm</label>
                         <input asp-for="ProductName" class="form-control" />
                         <span asp-validation-for="ProductName" class="text-danger"></span>
@@ -30,7 +35,8 @@
                         <span asp-validation-for="CategoryId" class="text-danger"></span>
                     </div>
 
-                    <div class="form-group mb-3">
+
+                    <div class="form-group">
                         <label asp-for="ImageUrl" class="control-label">Chọn Ảnh</label>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -39,7 +45,6 @@
                             <input type="text" class="form-control" id="file_input" asp-for="ImageUrl" aria-describedby="button-addon2" />
                         </div>
                         <span asp-validation-for="ImageUrl" class="text-danger"></span>
-
                     </div>
 
                     <div class="form-group mb-3">
@@ -80,4 +85,7 @@
         </div>
     </div>
 </div>
-
+@{
+    var summerNote = new Vegetable.Areas.Admin.Modelsss.SummerNote("#Detail");
+    <partial name="_SummerNote" model="summerNote" />
+}
