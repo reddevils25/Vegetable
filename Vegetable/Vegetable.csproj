@@ -25,6 +25,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\Admin\lib\elFinder\files\.trash\.gitkeep" />
+    <None Include="wwwroot\Admin\lib\elFinder\php\.tmp\.htaccess" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Update="wwwroot\img\productCmt\anh-kinh-di-16.jpg">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
