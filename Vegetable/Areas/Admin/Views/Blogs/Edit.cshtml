@@ -1,0 +1,62 @@
+﻿@model Vegetable.Models.Blog
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="body-wrapper">
+    <div class="card mb-0">
+        <div class="card-body">
+            <legend><b>Sửa bài viết</b></legend>
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="BlogId" />
+                <div class="card-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group mb-3">
+                        <label asp-for="Title" class="control-label">Tiêu đề</label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="Alias" class="control-label">Alias</label>
+                        <input asp-for="Alias" class="form-control" />
+                        <span asp-validation-for="Alias" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="Description" class="control-label">Description</label>
+                        <input asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label asp-for="Image" class="control-label">Chọn Ảnh</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <button type="button" class="btn btn-success" onclick="openDialog()">Chọn ảnh</button>
+                            </div>
+                            <input type="text" class="form-control" id="file_input" asp-for="Image" aria-describedby="button-addon2" />
+                        </div>
+                        <span asp-validation-for="Image" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group form check mb-3">
+                        <label class="form-checked-input">
+                            <input class="form-check-input" asp-for="IsActive" /> Hiển thị
+                        </label>
+                    </div>
+                    <div class="form-group mb-3">
+                        <input type="submit" value="Sửa" class="btn btn-primary" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@* @section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+ *@
