@@ -62,7 +62,7 @@ namespace Vegetable.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                product.Alias = Vegetable.Utilities.Function.TitleSlugenerationAlias(product.ProductName);
+                product.Alias = Vegetable.Utilities.Function.TitleSlugGenerationAlias(product.ProductName);
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

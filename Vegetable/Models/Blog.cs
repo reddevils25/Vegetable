@@ -9,11 +9,11 @@ public partial class Blog
 
     public int? CategoryId { get; set; }
 
-    public string? Title { get; set; }
+    public string Title { get; set; } = null!;
 
-    public string? Comment { get; set; }
+    public string Comment { get; set; } = null!;
 
-    public string? AuthorId { get; set; }
+    public string AuthorId { get; set; } = null!;
 
     public DateTime? CreatedAt { get; set; }
 

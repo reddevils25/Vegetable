@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Vegetable.Models;
-
+using Vegetable.Utilities;
 namespace Vegetable.Areas.Admin.Controllers
 {
     [Area("Admin")]
@@ -22,6 +22,10 @@ namespace Vegetable.Areas.Admin.Controllers
         // GET: Admin/Menus
         public async Task<IActionResult> Index()
         {
+            if (!Function.IsLogin())
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View(await _context.Menus.ToListAsync());
         }
 
@@ -58,7 +62,7 @@ namespace Vegetable.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                menu.Alias = Vegetable.Utilities.Function.TitleSlugenerationAlias(menu.Alias);
+                menu.Alias = Vegetable.Utilities.Function.TitleSlugGenerationAlias(menu.Alias);
                 _context.Add(menu);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

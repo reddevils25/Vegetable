@@ -1,8 +1,8 @@
-﻿@using Vegetable.Utilities
-@model Vegetable.Models.AdminUser
+﻿@model Vegetable.Models.AdminUser
 @{
     Layout = null;
 }
+
 <!doctype html>
 <html lang="en">
 
@@ -27,34 +27,47 @@
                                 <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
                                     <img src="~/admin/assets/images/logos/dark-logo.svg" width="180" alt="">
                                 </a>
-                                <p class="text-center">Đăng nhập </p>
-                                <form asp-controller="Login" asp-action="Index" novalidate>
+                                <p class="text-center">Tạo tài khoản của bạn</p>
+                                <form method="post" asp-action="Index" asp-controller="Register">
+                                    <!-- Username -->
                                     <div class="mb-3">
-                                        <label for="yourUsername" class="form-label">Email đăng nhập</label>
-                                        <input type="text" asp-for="Email" class="form-control" id="yourEmail" required>
+                                        <label for="yourName" class="form-label">Tên người dùng</label>
+                                        <input type="text" asp-for="Username" class="form-control" id="yourName" />
+                                        <span asp-validation-for="Username" class="text-danger"></span>
+                                    </div>
+
+                                    <!-- Email -->
+                                    <div class="mb-3">
+                                        <label for="yourEmail" class="form-label">Email đăng nhập</label>
+                                        <input type="email" asp-for="Email" class="form-control" id="yourEmail" />
                                         <span asp-validation-for="Email" class="text-danger"></span>
                                     </div>
+
+                                    <!-- Password -->
                                     <div class="mb-4">
                                         <label for="yourPassword" class="form-label">Mật khẩu</label>
-                                        <input type="password" asp-for="Passwords" class="form-control" id="yourPassword" required>
+                                        <input type="password" asp-for="Passwords" class="form-control" id="yourPassword" />
                                         <span asp-validation-for="Passwords" class="text-danger"></span>
                                     </div>
+
+                                    <!-- Điều khoản -->
                                     <div class="form-check mb-3">
-                                        <input asp-for="IsActive" class="form-check-input" type="checkbox" id="rememberMe" name="rememberMe">
-                                        <label class="form-check-label" for="rememberMe">
-                                            Ghi nhớ đăng nhập
+                                        <input class="form-check-input" asp-for="IsActive" type="checkbox" id="isActive" />
+                                        <label class="form-check-label" for="isActive">
+                                            Tôi đồng ý với các điều khoản sử dụng
                                         </label>
+                                        <span asp-validation-for="IsActive" class="text-danger"></span>
                                     </div>
-                                    <button type="submit" class="btn btn-primary w-100">Đăng Nhập</button>
-                                    <!-- Link Quên Mật Khẩu -->
-                                    <div class="text-center mt-3">
-                                        <a href="/forgot-password" class="text-decoration-none">Quên mật khẩu?</a>
-                                    </div>
-                                    <!-- Link Đăng Ký -->
-                                    <div class="text-center mt-3">
-                                        <p>Bạn chưa có tài khoản? <a href="~/Admin/register/Index" class="text-decoration-none">Đăng ký ngay</a></p>
-                                    </div>
+
+                                    <!-- Nút Đăng Ký -->
+                                    <button type="submit" class="btn btn-primary w-100">Đăng Ký</button>
                                 </form>
+
+                                <!-- Đăng nhập -->
+                                <div class="d-flex align-items-center justify-content-center mt-3">
+                                    <p class="fs-3 mb-0">Bạn đã có tài khoản?</p>
+                                    <a class="text-primary fw-bold ms-2" href="~/Admin/Login/Index">Đăng nhập</a>
+                                </div>
                             </div>
                         </div>
                     </div>

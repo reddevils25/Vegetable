@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Vegetable.Models;
-
+using Vegetable.Utilities;
 namespace Vegetable.Areas.Admin.Controllers
 {
     [Area("Admin")]
@@ -18,10 +18,14 @@ namespace Vegetable.Areas.Admin.Controllers
         {
             _context = context;
         }
-
+      
         // GET: Admin/Blogs
         public async Task<IActionResult> Index()
         {
+            if (!Function.IsLogin())
+            {
+                return RedirectToAction("Index", "Login");
+            }
             var vegetablesContext = _context.Blogs.Include(b => b.Category);
             return View(await vegetablesContext.ToListAsync());
         }
