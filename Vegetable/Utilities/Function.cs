@@ -52,5 +52,17 @@ namespace Vegetable.Utilities
                 return false;
             return true;
         }
+        public static void Login(int userId, string username, string email)
+        {
+            _UserId = userId;
+            _Username = username;
+            _Email = email;
+        }
+        public static void Logout()
+        {
+            _UserId = 0;
+            _Username = string.Empty;
+            _Email = string.Empty;
+        }
     }
 }

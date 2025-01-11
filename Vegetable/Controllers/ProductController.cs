@@ -46,7 +46,9 @@ namespace Vegetable.Controllers
                     ProductId = ProductId,
                     Rating = rating,
                     Comment = message,
-                     CreatedAt = DateTime.Now
+                    CreatedAt = DateTime.Now,
+                    IsActive = true
+
                 };
 
                 _context.Add(productRv);

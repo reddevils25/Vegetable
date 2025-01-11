@@ -14,15 +14,15 @@ namespace Vegetable.Areas.Admin.Controllers
             }
             return View();
         }
-        public ActionResult Logout()
-        {
+        //public ActionResult Logout()
+        //{
 
-            Function._UserId = 0;
-            Function._Username = string.Empty;
-            Function._Email = string.Empty;
-            Function._Message = string.Empty;
-            Function._MessageEmail = string.Empty;
-            return RedirectToAction("Index", "Home");
-        }
+        //    Function._UserId = 0;
+        //    Function._Username = string.Empty;
+        //    Function._Email = string.Empty;
+        //    Function._Message = string.Empty;
+        //    Function._MessageEmail = string.Empty;
+        //    return RedirectToAction("Index", "Home");
+        //}
     }
 }
